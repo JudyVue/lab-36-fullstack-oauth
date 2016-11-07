@@ -5,7 +5,7 @@
     background-color: $app-primary;
     span {
       font-weight: bold;
-      color: $app-secondary;
+      color: $app-black;
     }
 
     span:hover {
@@ -14,3 +14,6 @@
   }
 }
 
+h1 {
+  color: $app-black;
+}
