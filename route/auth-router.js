@@ -81,7 +81,6 @@ authRouter.get('/api/auth/oauth_callback', googleOAUTH, function(req, res){
   })
   .catch((err) => {
     console.error(err);
-    console.log('lulwat found');
     res.redirect('/');
   })
 })
