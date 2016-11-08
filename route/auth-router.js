@@ -45,8 +45,6 @@ authRouter.get('/api/login', basicAuth, function(req, res, next){
 authRouter.get('/api/auth/oauth_callback', googleOAUTH, function(req, res){
   debug('GET /api/auth/oauth_callback');
   //should have either req.googError or req.googleOAUTH
-  console.log('googleError', req.googleError);
-  console.log('googleOAUTH', req.googleOAUTH);
 
   //if googleError, deal w/ error
   if(req.googleError){
@@ -74,13 +72,11 @@ authRouter.get('/api/auth/oauth_callback', googleOAUTH, function(req, res){
       }
       return new User(userData).save();
     }
-    console.log('????? does it hit here ????')
     return Promise.reject(err);
   })
   //if  user exists, create token and send to user
   .then(user => user.generateToken())
   .then((token) => {
-    console.log('line 82 of middelware', token);
     res.redirect(`/?token=${token}`);
   })
   .catch((err) => {
